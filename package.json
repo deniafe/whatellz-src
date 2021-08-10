@@ -1,18 +1,50 @@
 {
-  "name": "whattelz",
-  "version": "0.1.0",
+  "name": "whatellz",
+  "version": "0.1.1",
   "private": true,
+  "author": {
+    "name": "Demerald"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deniafe/whatellz.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:all": "yarn run build:osx && yarn run build:win && yarn run build:linux",
+    "build:linux": "yarn electron:build -p never -- --linux",
+    "build:osx": "yarn electron:build -p never -- --mac",
+    "build:win": "yarn electron:build -p never",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "publish:linux": "yarn electron:build -p always -- --linux",
+    "publish:osx": "yarn electron:build -p always -- --mac",
+    "publish:win": "yarn electron:build -p always"
   },
+  "main": "background.js",
   "dependencies": {
+    "chart.js": "2.7.2",
     "core-js": "^3.6.5",
+    "electron-log": "^4.4.0",
+    "electron-store": "^8.0.0",
+    "emoji-mart-vue": "^2.6.6",
+    "firebase": "^8.4.3",
+    "nanoid": "^3.1.22",
+    "node-schedule": "^2.0.0",
+    "qrcode-generator": "^1.4.4",
+    "qrcode-terminal": "^0.12.0",
     "vue": "^2.6.11",
+    "vue-chartjs": "^3.2.1",
+    "vue-paystack": "^2.0.4",
     "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "vuetify": "^2.4.0",
+    "vuex": "^3.4.0",
+    "whatsapp-web.js": "^1.13.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -24,12 +56,18 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
+    "electron": "^11.0.0",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "^1.32.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-electron-builder": "~2.0.0-rc.6",
+    "vue-cli-plugin-vuetify": "~2.4.0",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.7.0"
   }
 }
